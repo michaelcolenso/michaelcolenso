@@ -1,0 +1,210 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Building Systems that Last - Bridging Physical Construction and Software Engineering"
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Michael Colenso" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-slate-deep text-concrete min-h-screen font-structure antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-deep/95 backdrop-blur-sm border-b border-steel-dark/30">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo / Name -->
+          <a href="/" class="flex items-center gap-3 group">
+            <div class="w-10 h-10 border-2 border-steel flex items-center justify-center group-hover:border-safety-orange transition-colors duration-200">
+              <span class="font-code text-sm font-semibold text-steel-light group-hover:text-safety-orange transition-colors duration-200">MC</span>
+            </div>
+            <div class="hidden sm:block">
+              <span class="font-structure font-semibold text-concrete">Michael Colenso</span>
+              <span class="font-code text-xs text-steel-light block">// builder</span>
+            </div>
+          </a>
+
+          <!-- Navigation Links -->
+          <div class="hidden md:flex items-center gap-8">
+            <a
+              href="#portfolio"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors duration-200"
+            >
+              projects
+            </a>
+            <a
+              href="#about"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors duration-200"
+            >
+              about
+            </a>
+            <a
+              href="#contact"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors duration-200"
+            >
+              contact
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden p-2 text-steel-light hover:text-concrete transition-colors"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+          <div class="flex flex-col gap-4 pt-4 border-t border-steel-dark/30">
+            <a
+              href="#portfolio"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors duration-200"
+            >
+              projects
+            </a>
+            <a
+              href="#about"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors duration-200"
+            >
+              about
+            </a>
+            <a
+              href="#contact"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors duration-200"
+            >
+              contact
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-steel-dark/30 py-8 mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="font-code text-sm text-steel">
+            <span class="text-steel-light">&copy; {new Date().getFullYear()}</span> Michael Colenso
+          </p>
+          <div class="flex items-center gap-6">
+            <a
+              href="https://github.com/michaelcolenso"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors"
+              aria-label="GitHub Profile"
+            >
+              github
+            </a>
+            <a
+              href="https://linkedin.com/in/michaelcolenso"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors"
+              aria-label="LinkedIn Profile"
+            >
+              linkedin
+            </a>
+            <a
+              href="https://medium.com/@michaelcolenso"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-code text-sm text-steel-light hover:text-blueprint transition-colors"
+              aria-label="Medium Blog"
+            >
+              medium
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      menuBtn?.addEventListener('click', () => {
+        const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', (!isExpanded).toString());
+        mobileMenu?.classList.toggle('hidden');
+      });
+
+      // Close menu when clicking a link
+      mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuBtn?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: rgba(59, 130, 246, 0.3);
+    color: #f8fafc;
+  }
+</style>

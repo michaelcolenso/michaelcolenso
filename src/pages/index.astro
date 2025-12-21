@@ -1,0 +1,407 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+// Construction Projects
+const constructionProjects = [
+  {
+    title: 'Hyatt Place Seattle',
+    description: 'Full-service hotel development in downtown Seattle. Managed construction timeline, budget allocation, and contractor coordination for a 10-story mixed-use building.',
+    metadata: [
+      { label: 'Budget', value: '$45M' },
+      { label: 'Role', value: 'Project Manager' },
+      { label: 'Location', value: 'Seattle, WA' },
+    ],
+    tags: ['Hospitality', 'Mixed-Use', 'Ground-Up'],
+  },
+  {
+    title: 'Alaska Building Renovation',
+    description: 'Historic preservation and seismic upgrade of Seattle\'s oldest steel-frame skyscraper. Balanced modern code compliance with architectural heritage protection.',
+    metadata: [
+      { label: 'Budget', value: '$12M' },
+      { label: 'Role', value: 'Project Manager' },
+      { label: 'Location', value: 'Seattle, WA' },
+    ],
+    tags: ['Historic', 'Seismic Retrofit', 'Preservation'],
+  },
+  {
+    title: 'Seismic Retrofit Portfolio',
+    description: 'Multi-building seismic strengthening program across Pacific Northwest. Implemented steel moment frames and foundation upgrades for unreinforced masonry structures.',
+    metadata: [
+      { label: 'Budget', value: '$8M+' },
+      { label: 'Role', value: 'Lead PM' },
+      { label: 'Location', value: 'Pacific NW' },
+    ],
+    tags: ['Seismic', 'Structural', 'Multi-Site'],
+  },
+];
+
+// Software Projects
+const softwareProjects = [
+  {
+    title: '1033 Program Visualization',
+    description: 'Interactive D3.js data visualization mapping the transfer of military equipment to local police departments. Enables exploration of federal program data through geographic and temporal filters.',
+    metadata: [
+      { label: 'Stack', value: 'D3.js, TopoJSON' },
+      { label: 'Role', value: 'Developer' },
+    ],
+    tags: ['D3.js', 'Data Viz', 'Maps', 'JavaScript'],
+    link: 'https://github.com/michaelcolenso',
+  },
+  {
+    title: 'Cloudmunch Platform',
+    description: 'Full-stack development on cloud orchestration platform. Built React components for CI/CD pipeline visualization and contributed to Node.js backend services.',
+    metadata: [
+      { label: 'Stack', value: 'React, Node.js' },
+      { label: 'Role', value: 'Full-Stack Dev' },
+    ],
+    tags: ['React', 'Node.js', 'DevOps', 'SaaS'],
+  },
+  {
+    title: 'D3.js Data Maps',
+    description: 'Collection of interactive choropleth maps and data visualizations. Custom geographic projections and responsive design for complex dataset exploration.',
+    metadata: [
+      { label: 'Stack', value: 'D3.js, GeoJSON' },
+      { label: 'Role', value: 'Developer' },
+    ],
+    tags: ['D3.js', 'SVG', 'GeoJSON', 'Responsive'],
+    link: 'https://github.com/michaelcolenso',
+  },
+];
+---
+
+<Layout title="Michael Colenso | Builder">
+  <!-- Hero Section -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden">
+    <!-- Background grid -->
+    <div class="absolute inset-0 bg-grid-slate bg-grid-lg opacity-20"></div>
+
+    <!-- Diagonal split decoration -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-blueprint/5 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-safety-orange/5 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Headlines -->
+        <div class="animate-fade-in">
+          <!-- Pre-headline -->
+          <div class="flex items-center gap-3 mb-6">
+            <div class="h-px w-12 bg-safety-orange"></div>
+            <span class="font-code text-sm text-safety-orange tracking-wider">ENGINEER & BUILDER</span>
+          </div>
+
+          <!-- Main headline -->
+          <h1 class="font-structure font-bold text-4xl sm:text-5xl lg:text-6xl text-concrete leading-tight mb-6">
+            Building Systems
+            <br />
+            <span class="text-steel-light">that Last.</span>
+          </h1>
+
+          <!-- Sub-headline -->
+          <p class="font-structure text-lg sm:text-xl text-steel-light max-w-lg mb-8 leading-relaxed">
+            Bridging the gap between <span class="text-safety-orange">Physical Construction</span> and{' '}
+            <span class="text-blueprint">Software Engineering</span>.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#physical"
+              class="group inline-flex items-center justify-center gap-2 bg-safety-orange hover:bg-safety-orange-dark text-slate-deep font-structure font-semibold px-6 py-3 transition-all duration-200"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              View Construction
+            </a>
+            <a
+              href="#digital"
+              class="group inline-flex items-center justify-center gap-2 border-2 border-blueprint text-blueprint hover:bg-blueprint hover:text-slate-deep font-structure font-semibold px-6 py-3 transition-all duration-200"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              View Code
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Terminal / Code block -->
+        <div class="hidden lg:block animate-slide-up">
+          <div class="bg-rebar border border-steel-dark rounded-sm overflow-hidden shadow-structural">
+            <!-- Terminal header -->
+            <div class="flex items-center gap-2 px-4 py-2 bg-steel-dark/50 border-b border-steel-dark">
+              <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+              <span class="ml-4 font-code text-xs text-steel-light">builder.ts</span>
+            </div>
+            <!-- Code content -->
+            <div class="p-6 font-code text-sm leading-relaxed overflow-x-auto">
+              <pre class="text-steel-light"><code><span class="text-blueprint">interface</span> <span class="text-safety-orange">Builder</span> {'{'}</code>
+<code>  <span class="text-concrete">name</span>: <span class="text-green-400">"Michael Colenso"</span>;</code>
+<code>  <span class="text-concrete">tracks</span>: [<span class="text-green-400">"construction"</span>, <span class="text-green-400">"software"</span>];</code>
+<code>  <span class="text-concrete">approach</span>: <span class="text-green-400">"systems-thinking"</span>;</code>
+<code>{'}'}</code>
+<code></code>
+<code><span class="text-blueprint">const</span> <span class="text-concrete">build</span> = (<span class="text-safety-orange">project</span>: Project) => {'{'}</code>
+<code>  <span class="text-blueprint">return</span> {'{'}
+<code>    <span class="text-concrete">quality</span>: <span class="text-green-400">"engineered"</span>,</code>
+<code>    <span class="text-concrete">timeline</span>: <span class="text-green-400">"on-schedule"</span>,</code>
+<code>    <span class="text-concrete">result</span>: <span class="text-green-400">"built-to-last"</span></code>
+<code>  {'}'};</code>
+<code>{'}'};<span class="text-safety-orange animate-terminal-blink">_</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <a href="#portfolio" class="text-steel-light hover:text-blueprint transition-colors" aria-label="Scroll to portfolio">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 relative">
+    <div class="absolute inset-0 bg-grid-slate bg-grid opacity-10"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section header -->
+      <div class="text-center mb-16">
+        <span class="font-code text-sm text-steel-light tracking-wider">// portfolio</span>
+        <h2 class="font-structure font-bold text-3xl sm:text-4xl text-concrete mt-2">
+          Dual Track Experience
+        </h2>
+        <p class="font-structure text-steel-light mt-4 max-w-2xl mx-auto">
+          Two decades of building—from high-rise construction to full-stack development.
+          Different materials, same engineering mindset.
+        </p>
+      </div>
+
+      <!-- Physical Projects -->
+      <div id="physical" class="mb-16 scroll-mt-24">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-safety-orange/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-safety-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+            </div>
+            <h3 class="font-structure font-semibold text-2xl text-concrete">Construction</h3>
+          </div>
+          <div class="h-px flex-1 bg-safety-orange/30"></div>
+          <span class="font-code text-xs text-safety-orange">physical builds</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {constructionProjects.map((project) => (
+            <ProjectCard
+              type="physical"
+              title={project.title}
+              description={project.description}
+              metadata={project.metadata}
+              tags={project.tags}
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- Digital Projects -->
+      <div id="digital" class="scroll-mt-24">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-blueprint/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-blueprint" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="font-structure font-semibold text-2xl text-concrete">Engineering</h3>
+          </div>
+          <div class="h-px flex-1 bg-blueprint/30"></div>
+          <span class="font-code text-xs text-blueprint">digital builds</span>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {softwareProjects.map((project) => (
+            <ProjectCard
+              type="digital"
+              title={project.title}
+              description={project.description}
+              metadata={project.metadata}
+              tags={project.tags}
+              link={project.link}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 relative bg-rebar/30">
+    <div class="absolute inset-0 bg-grid-slate bg-grid opacity-10"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Philosophy -->
+        <div>
+          <span class="font-code text-sm text-steel-light tracking-wider">// about</span>
+          <h2 class="font-structure font-bold text-3xl sm:text-4xl text-concrete mt-2 mb-6">
+            Systems Thinking
+          </h2>
+
+          <div class="space-y-6 font-structure text-steel-light leading-relaxed">
+            <p>
+              Managing a construction site and architecting cloud infrastructure require the same fundamental skills:
+              <span class="text-concrete">risk assessment</span>,{' '}
+              <span class="text-concrete">timeline management</span>, and{' '}
+              <span class="text-concrete">resource allocation</span>.
+            </p>
+
+            <p>
+              In construction, you coordinate trades, manage material logistics, and ensure structural integrity.
+              In software, you coordinate microservices, manage data pipelines, and ensure system reliability.
+            </p>
+
+            <p>
+              The tools change. The thinking doesn't.
+            </p>
+
+            <div class="pt-6 border-t border-steel-dark/30">
+              <p class="font-code text-sm text-steel mb-4">// connect</p>
+              <div class="flex flex-wrap gap-4">
+                <a
+                  href="https://github.com/michaelcolenso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-blueprint hover:text-blueprint-light transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  <span class="font-code text-sm">GitHub</span>
+                </a>
+                <a
+                  href="https://medium.com/@michaelcolenso"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 text-blueprint hover:text-blueprint-light transition-colors"
+                >
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                  </svg>
+                  <span class="font-code text-sm">Medium</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Skills / Comparison -->
+        <div class="bg-rebar border border-steel-dark p-6 relative">
+          <div class="absolute inset-0 bg-grid-slate bg-grid opacity-20"></div>
+
+          <div class="relative z-10">
+            <h3 class="font-code text-sm text-steel-light mb-6">// skill_matrix</h3>
+
+            <div class="space-y-6">
+              <!-- Construction Skills -->
+              <div>
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-3 h-3 bg-safety-orange"></div>
+                  <span class="font-structure font-semibold text-concrete">Construction</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  {['Project Management', 'Budgeting', 'Scheduling', 'Risk Assessment', 'Seismic Design', 'Historic Preservation', 'Contract Negotiation', 'Team Leadership'].map((skill) => (
+                    <span class="bg-safety-orange/10 text-safety-orange font-code text-xs px-2 py-1">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Software Skills -->
+              <div>
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-3 h-3 bg-blueprint"></div>
+                  <span class="font-structure font-semibold text-concrete">Software</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  {['JavaScript', 'TypeScript', 'React', 'Node.js', 'D3.js', 'Data Visualization', 'Full-Stack Dev', 'Cloud Architecture'].map((skill) => (
+                    <span class="bg-blueprint/10 text-blueprint font-code text-xs px-2 py-1">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Shared Skills -->
+              <div class="pt-4 border-t border-steel-dark/50">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-3 h-3 bg-gradient-to-r from-safety-orange to-blueprint"></div>
+                  <span class="font-structure font-semibold text-concrete">Shared</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  {['Systems Thinking', 'Resource Optimization', 'Stakeholder Management', 'Problem Solving', 'Documentation'].map((skill) => (
+                    <span class="bg-steel-dark text-steel-light font-code text-xs px-2 py-1">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 relative">
+    <div class="absolute inset-0 bg-grid-slate bg-grid opacity-10"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center">
+        <span class="font-code text-sm text-steel-light tracking-wider">// contact</span>
+        <h2 class="font-structure font-bold text-3xl sm:text-4xl text-concrete mt-2 mb-6">
+          Let's Build Something
+        </h2>
+        <p class="font-structure text-steel-light mb-8">
+          Whether it's a building or an application, I'm interested in projects that require
+          thoughtful engineering and lasting solutions.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="mailto:michael@colenso.com"
+            class="group inline-flex items-center justify-center gap-2 bg-blueprint hover:bg-blueprint-dark text-slate-deep font-structure font-semibold px-8 py-3 transition-all duration-200 w-full sm:w-auto"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            Email Me
+          </a>
+          <a
+            href="https://linkedin.com/in/michaelcolenso"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center justify-center gap-2 border-2 border-steel text-steel-light hover:border-blueprint hover:text-blueprint font-structure font-semibold px-8 py-3 transition-all duration-200 w-full sm:w-auto"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
