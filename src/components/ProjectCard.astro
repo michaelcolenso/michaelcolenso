@@ -1,0 +1,121 @@
+---
+interface Props {
+  type: 'physical' | 'digital';
+  title: string;
+  description: string;
+  metadata: {
+    label: string;
+    value: string;
+  }[];
+  tags?: string[];
+  link?: string;
+}
+
+const { type, title, description, metadata, tags = [], link } = Astro.props;
+
+const isPhysical = type === 'physical';
+
+// Style variations based on type
+const borderColor = isPhysical ? 'border-safety-orange/50' : 'border-blueprint/50';
+const hoverBorderColor = isPhysical ? 'hover:border-safety-orange' : 'hover:border-blueprint';
+const accentColor = isPhysical ? 'text-safety-orange' : 'text-blueprint';
+const tagBg = isPhysical ? 'bg-safety-orange/10 text-safety-orange' : 'bg-blueprint/10 text-blueprint';
+const iconBg = isPhysical ? 'bg-safety-orange/10' : 'bg-blueprint/10';
+---
+
+<article
+  class={`group relative bg-rebar/50 border-l-2 ${borderColor} ${hoverBorderColor} p-6 transition-all duration-300 hover:bg-rebar/80`}
+>
+  <!-- Grid overlay effect -->
+  <div class="absolute inset-0 bg-grid-slate bg-grid opacity-30 pointer-events-none"></div>
+
+  <!-- Type indicator -->
+  <div class={`absolute top-4 right-4 ${iconBg} px-2 py-1`}>
+    <span class={`font-code text-xs ${accentColor}`}>
+      {isPhysical ? '// physical' : '// digital'}
+    </span>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10">
+    <!-- Title -->
+    <h3 class="font-structure font-semibold text-xl text-concrete mb-2 pr-20">
+      {link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={`hover:${accentColor} transition-colors duration-200 inline-flex items-center gap-2`}
+        >
+          {title}
+          <svg
+            class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            />
+          </svg>
+        </a>
+      ) : (
+        title
+      )}
+    </h3>
+
+    <!-- Description -->
+    <p class="font-structure text-steel-light text-sm leading-relaxed mb-4">
+      {description}
+    </p>
+
+    <!-- Metadata -->
+    <div class="flex flex-wrap gap-x-6 gap-y-2 mb-4">
+      {metadata.map(({ label, value }) => (
+        <div class="flex items-baseline gap-2">
+          <span class="font-code text-xs text-steel uppercase tracking-wider">{label}:</span>
+          <span class={`font-code text-sm ${accentColor}`}>{value}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Tags -->
+    {tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 pt-4 border-t border-steel-dark/30">
+        {tags.map((tag) => (
+          <span class={`${tagBg} font-code text-xs px-2 py-1`}>
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <!-- Corner accent -->
+  <div class={`absolute bottom-0 right-0 w-8 h-8 ${isPhysical ? 'border-r-2 border-b-2 border-safety-orange/30' : 'border-r-2 border-b-2 border-blueprint/30'}`}></div>
+</article>
+
+<style>
+  article {
+    position: relative;
+  }
+
+  article::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  article:hover::before {
+    transform: scaleY(1);
+  }
+</style>
