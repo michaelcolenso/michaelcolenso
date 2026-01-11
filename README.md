@@ -2,7 +2,7 @@
 
 **Builder of things — physical and digital.**
 
-I spent years in construction, managing projects from blueprints to buildings. Now I write code. Turns out, the skills transfer: scope creep is scope creep, and a solid foundation matters whether it's concrete or architecture.
+I spent years in construction, managing projects from blueprints to buildings. Now I write code. Turns out, the skills transfer: scope creep is scope creep, and a solid foundation matters whether it's concrete or ecommerce.
 
 ```
 const michael = {
